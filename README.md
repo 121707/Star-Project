@@ -1,3 +1,9 @@
 # Star-Project
-前端所用技术：
-个人机器学习笔记
+###### 前端使用技术
+*html5
+*css
+*Jqury
+*bootstrap
+###### 后端使用技术
+*springBoot
+*mybatis-plus
