@@ -1,0 +1,25 @@
+user:
+  avatarBaseSrc: E:/user_avatar
+  avatarFaultName: default.png
+product:
+  pagesize: 8
+  pictureBaseSrc: E:/ppicture
+  pictureSuffix: .jpg
+
+spring:
+  redis:
+    port: 6379
+    host: 192.168.129.128
+
+  datasource:
+    username: root
+    password: password
+    url: jdbc:mysql://localhost:3306/project
+    driver-class-name: com.mysql.jdbc.Driver
+  resources:
+    static-locations: classpath:/static , file:E:/ppicture, file:E:/user_avatar
+#    http://192.168.129.128/ppicture/,http://192.168.129.128/userAvatar/
+  thymeleaf:
+    prefix: classpath:/templates/
+
+

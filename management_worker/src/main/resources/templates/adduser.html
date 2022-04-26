@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM Text</title>
+    <link rel="stylesheet"  type="text/css"  th:href="@{/css/form.css}">
+</head>
+<body>
+<form action="" method="post" id = "basic-grey" class="dark-matter">
+    <h1>新增用户
+        <span>Please fill all the texts in the fields.</span>
+    </h1>
+
+    <label>
+        <span>用户名 :</span>
+        <input id="register_name" type="text"  placeholder="Your Full Name" />
+    </label>
+    <label>
+        <span>User_password :</span>
+        <input id="register_password" type="text"  />
+    </label>
+    <label>
+        <span>User_email :</span>
+        <input id="register_email" type="text"  />
+    </label>
+    <label>
+        <span>User_phone :</span>
+        <input id="register_phone" type="text"  />
+    </label>
+
+    <label>
+        <span>User_balance :</span>
+        <input id="register_balance" type="text"  />
+    </label>
+    <label>
+        <span>User_type :</span>
+        <select id="register_type" value="买家">
+            <option value="买家">买家</option>
+            <option value="卖家">卖家</option>
+        </select>
+    </label>
+
+    <label>
+        <span>User_status :</span>
+        <select id="register_status" value="买家">
+            <option value="正常">正常</option>
+            <option value="封禁">封禁</option>
+        </select>
+    </label>
+
+    <label>
+        <span>User_credit :</span>
+        <select id="register_credit" value="2">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </label>
+    <br>
+    <label>
+        <input type="button" class="button" id = "user_register_submit" value="确定新增" />
+    </label>
+    <label>
+        <span></span>
+        <input type="button" class="button cancel_button"  value="取消新增" />
+    </label>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    username: root
+    password: password
+    url: jdbc:mysql://localhost:3306/jdbc1
+    driver-class-name: com.mysql.jdbc.Driver
+  resources:
+    static-locations: classpath:/static
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  pageSizeZero: true
+  params:
+    count: countSql
+  #... 其他配置信息

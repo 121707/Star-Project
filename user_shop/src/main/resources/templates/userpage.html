@@ -1,0 +1,553 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Star二手交易平台</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/base.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/hurst.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/city.css}">
+
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/home_ban.js}"></script>
+<script type="text/javascript" th:src="@{/js/eg_top_search.js}"></script>
+<script type="text/javascript" th:src="@{/js/city.js}"></script>
+<script type="text/javascript" th:src="@{/js/snncar.js}"></script>
+<script type="text/javascript">
+$(function(){
+	$('.navmenu li').hover(function(){
+		$('span',this).stop().css('height','2px');
+		$('span',this).animate({
+			left:'0',
+			width:'100%',
+			right:'0'
+		},200);
+	},function(){
+		$('span',this).stop().animate({
+			left:'50%',
+			width:'0'
+		},200);
+	});
+});
+</script>
+<!--导航登陆网页版下拉-->
+<script type="text/javascript">
+$(function () {
+	var setTime;
+	$(".egc-top .nav-cent .operate").hover(function () {
+		var _this = $(this);
+		setTime = setTimeout(function () {
+			_this.find(".sec-version").slideDown(200);
+			_this.find("i").removeClass("icon-angle-down").addClass("icon-angle-up");
+		}, 200);
+	}, function () {
+		if (setTime) {
+			clearTimeout(setTime);
+		}
+		$(".egc-top .nav-cent .sec-version").slideUp(200);
+		$(".egc-top .nav-cent .operate i").removeClass("icon-angle-up").addClass("icon-angle-down");
+	});
+});
+</script>
+<!--底部信息下拉-->
+<script type="text/javascript">
+$(function () {
+	var wind_wd = $(window).width();
+	if(wind_wd<=735){
+		/* $submenu.first().delay(400).slideDown(700);*/
+			$('.relate .tit').on('click', function() {
+			$(this).next('.con').slideToggle()
+			$(this).parent().siblings('.items').find('.con').slideUp();
+			});
+		}else{
+			 $('.relate .tit').unbind("click");
+			 $('.relate .con').show();
+			}
+	$(window).resize(function(){
+ 		var wind_wd = $(window).width();
+		if(wind_wd<=735){
+		/* $submenu.first().delay(400).slideDown(700);*/
+			$('.relate .tit').on('click', function() {
+			$(this).next('.con').slideToggle()
+			$(this).parent().siblings('.items').find('.con').slideUp();
+			});
+		}else{
+			 $('.relate .tit').unbind("click");
+			 $('.relate .con').show();
+			}
+	});
+});
+</script>
+
+<!--搜搜框获取焦点-->
+<script type="text/javascript">
+$(function () {
+$('.sea-ipt-txt').focus(function() { 
+$(this).addClass("on");
+$('.search-btn').addClass("on"); 
+}); 
+$('.sea-ipt-txt').blur(function() { 
+$(this).removeClass("on");
+$('.search-btn').removeClass("on");
+}); 
+});
+</script>
+<!--下拉导航关闭-->
+<script type="text/javascript">
+$(function () {
+ $('.menu-mb i').click(function() { 
+   $(".navigation-mb-list").slideDown(300);
+ }); 
+ $('.navigation-mb-list .list-close-btn').click(function() { 
+   $(".navigation-mb-list").slideUp(300);
+ });
+});
+</script>
+<!--stress搜索关闭-->
+<script type="text/javascript">
+$(function () {
+	var setTime;
+	$(".sercat .weixin").hover(function () {
+		setTime = setTimeout(function () {
+			$(".sercat .wxewm").show();
+		}, 300);
+	}, function () {
+		if (setTime) {
+			clearTimeout(setTime);
+		}
+		$(".sercat .wxewm").hide();
+	});
+});
+</script>
+<script type="text/javascript">
+$(function () {
+	var scroll_heitht = $('body').offset().top;
+	var isShow = true;
+	$(window).scroll(function () {
+       if ($(window).scrollTop() > scroll_heitht && isShow) {
+			 $('.stress-search-box').slideDown(200);
+       }else{
+		   $('.stress-search-box').slideUp(200);
+		   }
+       });
+   $('.stress-close a').click(function(){
+	   isShow=false;
+	   $('.stress-search-box').slideUp(200).unbind(window,aa);
+	   });
+});
+</script>
+</head>
+<body>
+<div class="egc-top">
+  <div class="nav-cent">
+    <div class="top-r">
+      <img style="border-radius: 14px;vertical-align: middle;" width="28px" height="28px"
+           th:src="${user.getAvatarUrl()}">
+      <a th:href="@{/shop/userpage}" >个人中心</a>
+      <a href="#">注销</a> </div>
+    <div class="top-l" style="vertical-align: middle;">全国统一客服热线：400-877-9288</div>
+  </div>
+  <div class="clear_fix"></div>
+</div>
+</div>
+<div class="navigation">
+
+</div>
+<ul class="navmenu">
+  <li class="active"><a th:href="@{/shop/main}">我要买</a><span></span></li>
+  <li><a href="wymc.html">我要卖</a><span></span></li>
+  <li><a th:href = "@{/shop/seckill}">参与秒杀</a><span></span></li>
+</ul>
+<div class="clear_fix"></div>
+<div class="clear_fix"></div>
+<!--会员中心-->
+<div class="mebBox">
+		<div class="meb-cont clearfix mainbox">
+			<div class="meb-nav fl dInline">
+				<ul class="clearfix">
+					<li class="select-btn" id = "b1"><a  >会员中心</a></li>
+                    <li class="select-btn" id = "b2" ><a >我的商品（待开发）</a></li>
+                    <li class="select-btn" id = "b3"><a >账户管理</a></li>
+                   <li class="select-btn" id = "b4"><a >上传新商品</a></li>
+                </ul>
+			</div>
+
+			<div class="meb-right fr dInline" >
+				<div class="mr-top">
+    <div class="mr-top-div clearfix">
+        <span class="fl">
+        </span>
+        <div class="mr-infor fl dInline">
+            <h2>您好，尊敬的会员<b id = "showname" th:text = "${user.getUserName()}"></b></h2>
+            <p th:text = "'手机：'+ ${user.getPhone()}"></p>
+          <p th:text = "'邮箱：'+ ${user.getEmail()}">
+        </div>
+    </div>
+</div>
+              <!--          _______-->
+				<div class="mr-detail" id="box1">
+					<div class="me-box">
+						<div class="mx-a">
+							<ul class="clearfix">
+								<li>
+									<img th:src="@{/images/hu2.png}">
+									<span>本月收入 <b th:text = "${input}"></b> 元</span>
+								</li>
+                              <li>
+                                <img th:src="@{/images/hu2.png}">
+                                <span>您累计发布 <b th:text = "${publishNum}"></b> 商品铺子</span>
+                              </li>
+                              <li>
+                                <img th:src="@{/images/ok.png}">
+                                <span>您累计卖出 <b th:text = "${sellNum}"></b> 件商品</span>
+                              </li>
+                              <li>
+                                <img th:src="@{/images/ok.png}">
+                                <span>您累计购买 <b th:text = "${buyNum}"></b> 个商品</span>
+                              </li>
+							</ul>
+						</div>
+						
+					</div>
+
+				</div>
+              <!--          __________-->
+              <!--          __________-->
+              <div class="mr-detail" id = "box2">
+                <div class="mr-tab clearfix">
+                  <a class="on">在售商品</a>
+                  <a >发布商品</a>
+                </div>
+                <div class="me-box">
+                  <div class="me-dl" style="display: block;">
+                    <div class="me-one" id="me-four">
+                      <ul class="cs-list">
+                        <li class="clearfix" style="position: relative;">
+                                  <span class="carImg fl dInline">
+                                    <a href="#" target="_blank">
+                                      <div class="car_bg"> </div>
+                                      <img th:src="@{/images/carinfor1.jpg}" onerror="this.src='images/carinfor1.jpg'" width="300"></a>
+                                  </span>	<div class="carTxt fr dInline">
+                        <h2><a href="#" target="_blank">奥迪A4L 2013 款 2.0T CVT 35TFSI 技术型</a></h2>
+                        <div class="price clearfix" style="margin:5px 0;">
+                          <div class="fl dInline pNum">
+                            <font>一口价</font><br>
+                            <span class="num nBlue">28.2</span>
+                            <font> 元</font>	 </div>
+                        </div>
+                        <div class="cs_bt clearfix">
+                          <a href="#" class="cs-q"></a>
+                          <a href="javascript:void(0)" onclick="delNeedThis('287')">取消收藏</a>
+                        </div>	</div></li>
+                      </ul>
+                      <div class="hPages">    </div></div>
+                  </div>
+                </div>
+              </div>
+              <!--          __________-->
+<!--                             -->
+              <div class="mr-detail" id = "box3" th:fragment="userInfo">
+                <div class="mr-tab clearfix">
+                  <a id="a1" class="on">个人资料管理 </a>
+                  <a id="a2">修改密码</a>
+                </div>
+                <div class="me-box me-box1">
+                  <div class="me-dl" id = "dl1" style="display:block;">
+                    <div class="me-one">
+                      <div class="accForm">
+                        <form action="" name="editM" >
+                          <div class="afl clearfix">
+                            <label class="fl">
+                              头像
+                            </label>
+                            <div class="af-r fl dInline">
+                              <img id = "curAva" th:src="${user.getAvatarUrl()}" width="150px" height="150px" style="border-radius: 75px">
+                              <input id = "newAvatar" type="file" style="display: none">
+                            </div>
+                          </div>
+
+
+                          <div class="afl clearfix">
+                            <label class="fl">
+                              手机号码
+                            </label>
+                            <div class="af-r fl dInline">
+                              <input type="text" class="ar-txt" name="mobile"  th:value = "${user.getPhone()}" disabled="disabled">
+                            </div>
+                          </div>
+                          <div class="afl clearfix">
+                            <label class="fl">
+                              用户名
+                            </label>
+                            <div class="af-r fl dInline">
+                              <input type="text" class="ar-txt" id="name"  th:value = "${user.getUserName()}" placeholder="请输入您的姓名" value="">
+                            </div>
+                          </div>
+                          <div class="afl clearfix">
+                            <label class="fl">
+                              邮箱
+                            </label>
+                            <div class="af-r fl dInline">
+                              <input type="text" class="ar-txt" id="email" th:value = "${user.getEmail()}" placeholder="请输入您的邮箱" value="">
+                            </div>
+                          </div>
+                          <div class="afl clearfix">
+                            <label class="fl">
+                            </label>
+                            <div class="af-r fl dInline">
+                              <button id = "submit"  class="ar-btn">提 交</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="me-dl" id = "dl2" style="display:none;">
+                    <div class="me-one">
+                      <div class="accForm">
+                        <form action=""  name="editP" >
+                          <div class="afl clearfix">
+                            <label class="fl">
+                              当前密码
+                            </label>
+                            <div class="af-r fl dInline">
+                              <input id = "curpass" type="password" class="ar-txt" name="password" placeholder="请输入当前密码" value="">
+                            </div>
+                          </div>
+                          <div class="afl clearfix">
+                            <label class="fl">
+                              新密码
+                            </label>
+                            <div class="af-r fl dInline">
+                              <input type="password" id = "newpass1" class="ar-txt" name="password1" placeholder="请输入新密码" value="">
+                            </div>
+                          </div>
+                          <div class="afl clearfix">
+                            <label class="fl">
+                              确认新密码
+                            </label>
+                            <div class="af-r fl dInline">
+                              <input type="password" id = "newpass2" class="ar-txt" name="password2" placeholder="请确认输入的新密码" value="">
+                            </div>
+                          </div>
+                          <div class="afl clearfix">
+                            <label class="fl">
+                            </label>
+                            <div class="af-r fl dInline">
+                              <button id = "savepass"  class="ar-btn">提 交</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+<!--              -->
+<!--              -->
+              <div class="mr-detail" id="box4" th:fragment = "box4">
+                <div class="me-one">
+                  <div class="accForm">
+                    <form action=""  name="editP" >
+                      <div class="afl clearfix">
+                        <label class="fl">
+                          商品展示图
+                        </label>
+                        <div class="af-r fl dInline">
+                          <img id = "showpicture" th:src="@{/images/upload.png}" width="70px"/>
+                          <input id = "ppicture" type="file" style="display: none">
+                        </div>
+                      </div>
+                      <div class="afl clearfix">
+                        <label class="fl">
+                          商品名称
+                        </label>
+                        <div class="af-r fl dInline">
+                        <input type="text" id = "pname"  class="ar-txt">
+                        </div>
+                      </div>
+                      <div class="afl clearfix">
+                        <label class="fl">
+                          商品分类
+                        </label>
+                        <div class="af-r fl dInline">
+                          <input type="text" id = "pcatetogy" class="ar-txt">
+                        </div>
+                      </div>
+                      <div class="afl clearfix">
+                        <label class="fl">
+                          商品价格
+                        </label>
+                        <div class="af-r fl dInline">
+                          <input type="text" id = "pprice" class="ar-txt">
+                        </div>
+                      </div>
+                      <div class="afl clearfix">
+                        <label class="fl">
+                          商品库存
+                        </label>
+                        <div class="af-r fl dInline">
+                          <input type="text" id = "pstock" class="ar-txt">
+                        </div>
+                      </div>
+                      <div class="afl clearfix">
+                        <label class="fl">
+                          商品品牌
+                        </label>
+                        <div class="af-r fl dInline">
+                          <input type="text" id = "pbrand" class="ar-txt">
+                        </div>
+                      </div>
+                      <div class="afl clearfix">
+                        <label class="fl">
+                          发售时间
+                        </label>
+                        <div class="af-r fl dInline">
+                          <input type="datetime-local" id = "psellTime" class="ar-txt">
+                        </div>
+                      </div>
+                      <div class="afl clearfix">
+                        <label class="fl">
+                          商品描述
+                        </label>
+                        <div class="af-r fl dInline">
+                          <textarea id = "pinfo" style="width: 300px; height: 80px"></textarea>
+                        </div>
+                      </div>
+
+                      <div class="afl clearfix">
+                        <label class="fl">
+                        </label>
+                        <div class="af-r fl dInline">
+                          <button id = "uoloadbutton"  class="ar-btn">提 交</button>
+                        </div>
+                      </div>
+                      <div class="afl clearfix">
+                        <label class="fl">
+
+                        </label>
+                        <div class="af-r fl dInline">
+                          <h3 th:text = "${addMess}"></h3>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                  </div>
+
+                </div>
+
+              </div>
+<!--              -->
+			</div>
+
+		</div>
+	</div>
+<div class="clear_fix"></div>
+<!--底部-->
+<div class="ftWrap">
+  <div class="foot">
+    <div class="cent">
+      <div class="relate">
+        <div class="items">
+          <div class="tit"><i class="icon-angle-right"></i>交易帮助</div>
+          <div class="con"> <a href="#">买车帮助</a> <a href="#">卖车帮助</a> <a href="#">过户帮助</a> </div>
+        </div>
+        <div class="items">
+          <div class="tit"><i class="icon-angle-right"></i>客服中心</div>
+          <div class="con"> <a href="abut.html">网站合作</a> <a href="about.html">关于我们</a> <a href="contact.html">联系我们</a> </div>
+        </div>
+        <div class="items">
+          <div class="tit"><i class="icon-angle-right"></i>购车指南</div>
+          <div class="con"> <a href="#">购车帮助</a></div>
+        </div>
+        <div class="app-section"> <img class="js-delayed-img"  src="images/f_wx.jpg">
+          <div class="title">扫码关注微信</div>
+          <p> 随时随地，秒杀好车<br />
+            优质个人二手车 </p>
+        </div>
+        <div class="items last">
+          <div class="tel">
+            <h1>400-877-9288</h1>
+            <p>周一至周日 8:00-18:00</p>
+            <p>免费咨询(咨询、建议、投诉)</p>
+            <a href="#" class="kf"><i class="kf-icon"></i>在线客服</a> </div>
+          <div class="tel-mb">
+            <p><span>400-710-8886</span>周一至周日 8:00-18:00(仅收市话费)</p>
+            <a href="#" class="kf"><i class="kf-icon"></i>在线客服</a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <div class="cent"> Copyright © 2016-2017, snncar.com,All Rights Reserved 皖ICP备16022456号-1</div>
+  </div>
+</div>
+<script type="text/javascript" th:src="@{/js/3c-menu.js}"></script>
+<script type="text/javascript" th:src="@{/js/lg_reg.js}"></script>
+<!--会员登录和注册弹出框开始-->
+<div id="popBox">
+  <div class="popCont"> <a class="p_closed">关闭</a>
+    <div class="p-tab"> <a>会员登录<i></i></a><a>会员注册<i></i></a> </div>
+    <div class="p-detail">
+      <div class="p-dl">
+        <form onsubmit="return check();" enctype="multipart/form-data" method="post" name="form" id="form">
+          <ul class="login-items">
+            <li>
+              <label>用户名(手机号)</label>
+              <input class="input" type="text" value="" maxlength="32"  name="username" placeholder="请输入您的手机号">
+            </li>
+            <li>
+              <label>密码</label>
+              <input class="input" type="password" value="" maxlength="16"  name="password">
+            </li>
+          </ul>
+          <div class="login-check">
+            <input type="checkbox" name="checkbox" style=" width:auto;" />
+            <label>记住我</label>
+            <a href="Meet/editPass">忘记登录密码？</a> </div>
+          <div class="login-button">
+            <input type="hidden" value="" name="carid" class="ordercarid" />
+            <input type="hidden" value="" name="carstatus" class="orderstatus" />
+            <input type="button"  value="登&nbsp;&nbsp;&nbsp;&nbsp;陆" class="fM" onclick="$('#form').submit()" />
+          </div>
+        </form>
+      </div>
+      <div class="p-dl">
+        <form class="registForm" onsubmit="return regcheck();" enctype="multipart/form-data" method="post" name="reg" id="reg">
+          <ul class="login-items">
+            <li class="clearfix">
+              <input class="input" name="mobile" id="mobile" type="text" value="" placeholder="手机号码（登录帐号）">
+            </li>
+            <li class="clearfix">
+              <input class="input left" type="text" value=""  name="verify" placeholder="输入验证码" style="width:100px;" />
+              <div id="send"><a href="#" class="send_code right">获取验证码</a></div>
+            </li>
+            <li class="clearfix">
+              <input class="input" type="text" value=""  name="realname" placeholder="姓名">
+            </li>
+            <li class="clearfix sex">
+              <input type="radio" checked="" name="gender" value="M" />
+              男&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="gender" value="F" />
+              女 </li>
+            <li class="clearfix">
+              <input id="" class="input" type="password" name="password" value="" placeholder="输入密码（六位字符）">
+            </li>
+          </ul>
+          <div class="login-button">
+            <input type="hidden" value="" name="carid" class="ordercarid" />
+            <input type="hidden" value="" name="carstatus" class="orderstatus" />
+            <input type="button"  value="立即注册" class="fM" onclick="$('#reg').submit()" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" th:src="@{/js/user.js}"></script>
+<!--会员登录和注册弹出框结束-->
+</body>
+</html>

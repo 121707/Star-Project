@@ -1,0 +1,37 @@
+page:
+  size: 10
+user:
+  avatarBaseSrc: E:/user_avatar/
+  avatarFaultName: default.png
+
+admin:
+  adminListSize: 10
+
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+  application:
+    name: adminManagement
+  cloud:
+    nacos:
+      ##注册
+      discovery:
+        server-addr: http://192.168.129.128:8848
+
+  datasource:
+    username: root
+    password: password
+    url: jdbc:mysql://localhost:3306/project
+    driver-class-name: com.mysql.jdbc.Driver
+  resources:
+    static-locations: classpath:/static ,file:E:/ppicture, file:E:/user_avatar
+#      http://192.168.129.128/ppicture/ ，http://192.168.129.128/userAvatar/
+  
+server:
+  port: 8081
+
+

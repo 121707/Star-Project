@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM Text</title>
+    <link rel="stylesheet"  type="text/css"  th:href="@{/css/form.css}">
+</head>
+<body>
+<form action="" method="post" id = "basic-grey" class="dark-matter">
+    <h1>新增管理员
+        <span>Please fill all the texts in the fields.</span>
+    </h1>
+
+    <label>
+        <span>员工Id :</span>
+        <input id="add_empolyeeId" type="text"  />
+    </label>
+    <label>
+        <span>密码 :</span>
+        <input id="add_password" type="text"  />
+    </label>
+    <label>
+        <span>电话 :</span>
+        <input id="add_phone" type="text"  />
+    </label>
+    <label>
+        <span>Type:</span>
+        <select id="add_type" >
+            <option value="super">super</option>
+            <option value="normal">normal</option>
+        </select>
+    </label>
+
+    <label>
+        <span>Status :</span>
+        <select id="add_status" >
+            <option value="正常">正常</option>
+            <option value="封禁">封禁</option>
+        </select>
+    </label>
+
+    <br>
+    <label>
+        <span>&nbsp;</span>
+        <input type="button" class="button" id = "save_add_button" value="新增账户" />
+    </label>
+    <label>
+        <span>&nbsp;</span>
+        <input type="button" class="button"  id = "cancle_add_button" value="取消新增" />
+    </label> <br>
+
+</form>
+
+</body>
+</html>

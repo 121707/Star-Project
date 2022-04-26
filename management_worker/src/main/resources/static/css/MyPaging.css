@@ -1,0 +1,105 @@
+/*分页样式*/
+._my-paging-box {
+	display: inline-block;
+}
+._my-paging-box .pg-item {
+	float: left;
+	line-height: 30px;
+}
+._my-paging-box .pg-item+.pg-item {
+	margin-left: 15px;
+}
+/*总条数*/
+._my-paging-box .total span {
+	display: inline-block;
+	padding: 0 5px;
+}
+/*分页按钮*/
+._my-paging-box .link-list {
+	margin: 0;
+	padding: 0;
+}
+._my-paging-box .link-list li {
+	float: left;
+	list-style: none;
+}
+._my-paging-box .link-list li+li {
+	margin-left: 8px;
+}
+._my-paging-box .link-btn {
+	padding: 0 10px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 3px;
+	cursor: pointer;
+	text-align: center;
+	background: #f4f4f5;
+}hover {
+	color: #409eff;
+._my-paging-box .link-btn:
+}
+._my-paging-box .link-btn.active {
+	background: #409eff;
+	color: #fff;
+}
+._my-paging-box .link-btn.disabled {
+	background: #eee;
+	color: #ccc;
+	cursor: default;
+}
+
+/*跳*/
+.jumper span {
+	float: left;
+}
+.jumper input {
+	float: left;
+	margin: 0 5px;
+	padding: 0 5px;
+	width: 50px;
+	height: 30px;
+	border-radius: 2px;
+	border: 1px solid #999;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.update_list{
+top: 50%;
+left: 50%;
+}
+.big_div{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+label {
+	display: inline-block;
+	margin-right: 100px;
+}
+label>span {
+	width: 20%;
+	text-align: right;
+	padding-right: 10px;
+	margin-top: 10px;
+	font-weight: bold;
+}
+.search{
+	border: none;
+	color: #525252;
+	height: 25px;
+	line-height:15px;
+	margin-bottom: 16px;
+	margin-right: 6px;
+	margin-top: 2px;
+	outline: 0 none;
+	padding: 5px 0px 5px 5px;
+	width: 220px;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	background: #DFDFDF;
+}

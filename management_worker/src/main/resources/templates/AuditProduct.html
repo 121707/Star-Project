@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM Text</title>
+    <link rel="stylesheet"  type="text/css"  th:href="@{/css/form.css}">
+</head>
+<style>
+    #basic-grey{
+        height: 600px;
+    }
+
+</style>
+<body>
+<form action="" method="post" id = "basic-grey" class="dark-matter">
+    <h1>商品审批
+        <span>Please Seriously Read</span>
+    </h1>
+    <label>
+        <span>商品展示图:</span>
+        <img width="80px" height="80px" id = "auditPpicture">
+    </label>
+
+    <label>
+        <span>商品Id :</span>
+        <input id="auditProductId" type="text"  />
+    </label>
+    <label>
+        <span>申请人Id :</span>
+        <input id="auditUserId" type="text"  />
+    </label>
+    <label>
+        <span>商品名称 :</span>
+        <input id="auditName" type="text"  />
+    </label>
+    <label>
+        <span>商品价格 :</span>
+        <input id="auditPrice" type="text"  />
+    </label>
+    <label>
+        <span>商品类别 :</span>
+        <input id="auditCategory" type="text"  />
+    </label>
+    <label>
+        <span>品牌信息 :</span>
+        <input id="auditBrand" type="text"  />
+    </label>
+    <label>
+        <span>商品描述 :</span>
+        <textarea style="display: block ; width: 300px"  id="auditproductInform" ></textarea>
+    </label>
+
+
+    <br>
+    <label class="abutton">
+        <span>&nbsp;</span>
+        <input type="button" class="audit_button button" id = "audit_pass_button" value="通过" />
+    </label>
+    <label class="abutton">
+        <span>&nbsp;</span>
+        <input type="button" class="audit_button button"  id = "audit_fail_button" value="驳回" />
+    </label>
+    <label class="abutton">
+        <span>&nbsp;</span>
+        <input type="button" class="button "  id = "cancel_audit_button" value="关闭" />
+    </label>
+    <br>
+
+</form>
+
+</body>
+</html>

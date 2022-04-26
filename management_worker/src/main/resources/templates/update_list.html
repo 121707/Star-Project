@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM Text</title>
+    <link rel="stylesheet"  type="text/css"  th:href="@{/css/form.css}">
+</head>
+<body>
+<form action="" method="post" id = "basic-grey" class="dark-matter">
+    <h1>用户信息修改
+        <span>Please fill all the texts in the fields.</span>
+    </h1>
+
+    <label>
+        <span>用户头像 :</span>
+        <img id = "avatar" class="img-circle">
+        <input type="button" id="avater_save_button" value="保存修改" class="btn-danger btn-small"></input>
+        <input type="file" id="user_avater" value="上传头像" class="btn-danger btn-small"></input>
+    </label>
+
+    <label>
+        <span>用户名 :</span>
+        <input id="name" type="text"  placeholder="Your Full Name" />
+    </label>
+    <label>
+        <span>User_email :</span>
+        <input id="email" type="text"  />
+    </label>
+    <label>
+        <span>User_phone :</span>
+        <input id="phone" type="text"  />
+    </label>
+    <label>
+        <span>User_type :</span>
+        <select id="group" value="买家">
+            <option value="买家">买家</option>
+            <option value="卖家">卖家</option>
+        </select>
+    </label>
+
+    <label>
+        <span>User_status :</span>
+        <select id="status" value="买家">
+            <option value="正常">正常</option>
+            <option value="封禁">封禁</option>
+        </select>
+    </label>
+
+    <label>
+        <span>User_credit :</span>
+        <select id="credit" value="2">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </label>
+    <br>
+    <label>
+        <span>&nbsp;</span>
+        <input type="button" class="button" id = "save_button" value="保存信息" />
+    </label>
+    <label>
+        <span>&nbsp;</span>
+        <input type="button" class="button cancel_button" id = "" value="取消修改" />
+    </label> <br>
+
+</form>
+
+</body>
+</html>

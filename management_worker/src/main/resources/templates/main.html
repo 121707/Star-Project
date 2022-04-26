@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8"/>
+<title>秀气绿色网站后台管理页面html源码模板 - </title>
+<meta name="author" content="DeathGhost" />
+ <link rel="stylesheet" type="text/css"  th:href="@{/css/bootstrap.css}"/>
+ <link rel="stylesheet" type="text/css" href="../../css/managament_worker/style.css" th:href="@{/css/style.css}"/>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<script  th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/js/jquery.mCustomScrollbar.concat.min.js}"></script>
+<script>
+</script>
+</head>
+<body>
+<!--header-->
+<header>
+ <h2  style="margin-left: 20px;font-size: 20px;display: inline-block ; color: white">欢迎你, </h2>
+ <span style="font-size: 20px; color: white"  th:text = "${adminId}"> </span>
+ <ul class="rt_nav">
+  <li><a href="" target="_blank" class="website_icon">站点首页</a></li>
+  <li><a href="#" class="admin_icon">DeathGhost</a></li>
+  <li><a href="#" class="set_icon">账号设置</a></li>
+  <li><a th:href="@{/adminlogout}" class="quit_icon">安全退出</a></li>
+ </ul>
+</header>
+
+<!-- 自定义左列表 aside nav -->
+<aside class="lt_aside_nav content mCustomScrollbar">
+ <h2><a href="http://bulamao.taobao.com/">起始页</a></h2>
+ <ul>
+  <li>
+   <dl>
+    <dt>角色管理</dt>
+    <dd><a id="userlist" onclick="jump('/main/userlist')" href="#">会员管理</a></dd>
+    <dd sec:authorize="hasAuthority('super')" ><a id="adminlist" href="#" onclick="jump('/main/adminlist')">管理员管理</a></dd>
+   </dl>
+  </li>
+  <li>
+   <dl>
+    <dt>商品管理</dt>
+    <dd><a  href="#">商品信息</a></dd>
+    <dd><a onclick="jump('/main/auditlist')" href="#">商品审核</a></dd>
+   </dl>
+  </li>
+  <li>
+   <dl>
+    <dt>在线统计</dt>
+    <dd><a href="#">流量统计</a></dd>
+   </dl>
+  </li>
+  <li>
+   <p class="btm_infor">© XXX 版权所有</p>
+  </li>
+ </ul>
+</aside>
+
+
+<!-- 自定义右界面  -->
+<section  class="rt_wrap content mCustomScrollbar">
+     <!-- 开始：以下内容则可删除，仅为素材引用参考-->
+     <embed th:src="@{/main/userlist}" id = "right" class = "right" type="text/html">
+
+</section>
+
+
+<style>
+.copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
+</style>
+<div class="copyrights" id="links20210126">
+	Collect from <a href="http://www.cssmoban.com/"  title="网站模板">模板之家</a>
+	<a href="https://www.chazidian.com/"  title="查字典">查字典</a>
+</div>
+</body>
+<script>
+ function jump(tar){
+  $("#right").attr('src',tar)
+ }
+
+</script>
+</html>
