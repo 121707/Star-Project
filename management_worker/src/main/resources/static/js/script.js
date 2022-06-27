@@ -173,7 +173,6 @@ $('#save_button').click(function () {
 		},
 	});
 })
-
 //头像专用保存修改
 $('#avater_save_button').click(function (){
 	var formData = new FormData();

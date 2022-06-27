@@ -25,8 +25,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Configuration
 @EnableCaching
 
-
-
 public class redisConfig extends CachingConfigurerSupport {
 
     public KeyGenerator keyGenerator() {
