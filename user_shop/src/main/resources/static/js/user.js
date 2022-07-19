@@ -101,6 +101,7 @@ $("#ppicture").change(function (){
 $("#uoloadbutton").click(function (){
     var formData = new FormData();
     formData.append("file",$("#ppicture")[0].files[0]);
+
     var data = JSON.stringify({
         "name": $("#pname").val(),
         "price": $("#pprice").val(),

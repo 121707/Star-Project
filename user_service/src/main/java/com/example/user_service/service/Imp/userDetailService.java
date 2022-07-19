@@ -1,14 +1,13 @@
-package com.example.user_shop.demo.service.Imp;
+package com.example.user_service.service.Imp;
 
 
 import com.example.common1.security.entity.SecurityUser;
+import com.example.user_service.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.example.user_shop.demo.entity.User;
-
 
 import java.util.ArrayList;
 

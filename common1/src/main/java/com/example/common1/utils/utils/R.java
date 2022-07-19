@@ -1,6 +1,7 @@
-package com.atguigu.utils.utils;
+package com.example.common1.utils.utils;
 
 import lombok.Data;
+
 import java.util.HashMap;
 import java.util.Map;
 

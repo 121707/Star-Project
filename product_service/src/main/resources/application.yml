@@ -17,7 +17,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 
   application:
-    name: order-service
+    name: product-service
   cloud:
     nacos:
       ##注册

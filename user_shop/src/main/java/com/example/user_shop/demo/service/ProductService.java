@@ -1,12 +1,12 @@
-package user_shop.demo.service;
+package com.example.user_shop.demo.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.web.multipart.MultipartFile;
-import user_shop.demo.entity.NewProductEntity;
-import user_shop.demo.entity.PageEntity;
-import user_shop.demo.entity.Product;
-import user_shop.demo.entity.ProductCondition;
+import com.example.user_shop.demo.entity.NewProductEntity;
+import com.example.user_shop.demo.entity.PageEntity;
+import com.example.user_shop.demo.entity.Product;
+import com.example.user_shop.demo.entity.ProductCondition;
 
 import java.io.IOException;
 

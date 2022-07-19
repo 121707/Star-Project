@@ -1,6 +1,6 @@
-package com.atguigu.security.filter;
+package com.example.common1.security.filter;
 
-import com.atguigu.security.security.TokenManager;
+import com.example.common1.security.security.TokenManager;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,15 +21,20 @@ import java.util.List;
 public class TokenAuthFilter extends BasicAuthenticationFilter {
 
     private TokenManager tokenManager;
-    private RedisTemplate redisTemplate;
-    public TokenAuthFilter(AuthenticationManager authenticationManager,TokenManager tokenManager,RedisTemplate redisTemplate) {
+//    private RedisTemplate redisTemplate;
+//    public TokenAuthFilter(AuthenticationManager authenticationManager,TokenManager tokenManager,RedisTemplate redisTemplate) {
+//        super(authenticationManager);
+//        this.tokenManager = tokenManager;
+//        this.redisTemplate = redisTemplate;
+//    }
+
+    public TokenAuthFilter(AuthenticationManager authenticationManager,TokenManager tokenManager) {
         super(authenticationManager);
         this.tokenManager = tokenManager;
-        this.redisTemplate = redisTemplate;
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException, ServletException {
         //获取当前认证成功用户权限信息
         UsernamePasswordAuthenticationToken authRequest = getAuthentication(request);
         //判断如果有权限信息，放到权限上下文中
@@ -46,12 +51,12 @@ public class TokenAuthFilter extends BasicAuthenticationFilter {
             //从token获取用户名
             String username = tokenManager.getUserInfoFromToken(token);
             //从redis获取对应权限列表
-            List<String> permissionValueList = (List<String>)redisTemplate.opsForValue().get(username);
+//            List<String> permissionValueList = (List<String>)redisTemplate.opsForValue().get(username);
             Collection<GrantedAuthority> authority = new ArrayList<>();
-            for(String permissionValue : permissionValueList) {
-                SimpleGrantedAuthority auth = new SimpleGrantedAuthority(permissionValue);
-                authority.add(auth);
-            }
+//            for(String permissionValue : permissionValueList) {
+//                SimpleGrantedAuthority auth = new SimpleGrantedAuthority(permissionValue);
+//                authority.add(auth);
+//            }
             return new UsernamePasswordAuthenticationToken(username,token,authority);
         }
         return null;

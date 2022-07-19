@@ -7,16 +7,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="test" />
-        <module name="management_worker" />
+        <module name="common1" />
+        <module name="user_service" />
+        <module name="spring_security" />
         <module name="user_shop" />
+        <module name="service_base" />
+        <module name="management_worker" />
+        <module name="product_service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="common" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="management_worker" options="" />
-      <module name="test" options="" />
+      <module name="product_service" options="" />
       <module name="user_shop" options="" />
     </option>
   </component>

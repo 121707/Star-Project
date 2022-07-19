@@ -1,6 +1,7 @@
 var curpage;
 // 初始化分页
 var mysize = 8;
+var urlPrefix = 'http://star.pro.com:8082';
 
 //设置tbody的html
 function setTbody (arr) {
@@ -39,7 +40,11 @@ function getList(current) {
                     contentType: "application/json",
                     type: 'post',
                     async: false,
-                    url: '/shop/productList',
+                    url: urlPrefix + '/productService/productList',
+                    xhrFields: {
+                    withCredentials: true
+                   },
+                    crossDomain: true,
                     data: JSON.stringify(data),
                     success: function (data) {
                         setTbody(data['list']);

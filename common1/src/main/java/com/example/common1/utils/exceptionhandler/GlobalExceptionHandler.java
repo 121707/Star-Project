@@ -1,12 +1,12 @@
-package com.atguigu.utils.exceptionhandler;
+package com.example.common1.utils.exceptionhandler;
 
-import com.atguigu.utils.utils.R;
+import com.example.common1.utils.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@ControllerAdvice
+//@ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
 

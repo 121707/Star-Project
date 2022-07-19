@@ -21,10 +21,8 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+
+
         <!--thymeleaf启动器-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

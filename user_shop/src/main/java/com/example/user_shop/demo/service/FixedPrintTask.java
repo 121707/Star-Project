@@ -1,8 +1,8 @@
-package user_shop.demo.service;
+package com.example.user_shop.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import user_shop.demo.service.Imp.ProductServiceImp;
+import com.example.user_shop.demo.service.Imp.ProductServiceImp;
 
 import java.text.ParseException;
 

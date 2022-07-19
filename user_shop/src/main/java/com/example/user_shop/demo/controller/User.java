@@ -1,16 +1,16 @@
-package user_shop.demo.controller;
+package com.example.user_shop.demo.controller;
 
-import org.apache.ibatis.jdbc.Null;
+import com.alibaba.fastjson.JSONObject;
+import com.example.user_shop.demo.service.ProductServiceApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import user_shop.demo.entity.NewProductEntity;
-import user_shop.demo.entity.PassEntity;
-import user_shop.demo.entity.UserInfo;
-import user_shop.demo.service.Imp.ProductServiceImp;
-import user_shop.demo.service.Imp.UserServiceImp;
+import com.example.user_shop.demo.entity.NewProductEntity;
+import com.example.user_shop.demo.entity.PassEntity;
+import com.example.user_shop.demo.service.Imp.ProductServiceImp;
+import com.example.user_shop.demo.service.Imp.UserServiceImp;
 
 import java.io.IOException;
 import java.security.Principal;
@@ -21,6 +21,9 @@ public class User {
     private ProductServiceImp productServiceImp;
     @Autowired
     private UserServiceImp userServiceImp;
+
+    @Autowired
+    private ProductServiceApi productServiceApi;
 
     @PostMapping("/user/updateUserInfo")
     public String m1(@RequestParam("name")String name , @RequestParam("email")String email ,
@@ -45,8 +48,8 @@ public class User {
     //上传新商品
     @PostMapping("/user/uploadProduct")
     public String m3(@RequestPart("productinfo")NewProductEntity np, @RequestPart("file") MultipartFile file, Principal principal , Model model) throws IOException {
-        System.out.println(np);
-        model.addAttribute("addMess",productServiceImp.addNewProduct(np , file ,Integer.valueOf(principal.getName()))?"上传成功，等待审批":"上传失败");
+        String npJson = JSONObject.toJSONString(np);
+        model.addAttribute("addMess",productServiceApi.uploadNewProduct(npJson, file, Integer.valueOf(principal.getName()))?"上传成功，等待审批":"上传失败");
         return "userpage::box4";
     }
 }

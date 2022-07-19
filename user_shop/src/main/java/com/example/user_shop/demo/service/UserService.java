@@ -1,11 +1,10 @@
-package user_shop.demo.service;
+package com.example.user_shop.demo.service;
 
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.web.multipart.MultipartFile;
-import user_shop.demo.entity.PassEntity;
-import user_shop.demo.entity.User;
+import com.example.user_shop.demo.entity.PassEntity;
+import com.example.user_shop.demo.entity.User;
 
 import java.io.IOException;
 

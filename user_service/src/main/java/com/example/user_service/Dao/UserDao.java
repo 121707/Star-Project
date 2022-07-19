@@ -1,8 +1,8 @@
-package com.example.user_shop.demo.Dao;
+package com.example.user_service.Dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.*;
-import com.example.user_shop.demo.entity.User;
+import com.example.user_service.entity.User;
+import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserDao extends BaseMapper<User> {

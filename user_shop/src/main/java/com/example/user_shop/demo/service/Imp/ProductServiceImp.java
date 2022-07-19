@@ -1,24 +1,20 @@
-package user_shop.demo.service.Imp;
+package com.example.user_shop.demo.service.Imp;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.joda.time.DateTime;
-import org.joda.time.Days;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import user_shop.demo.Dao.ProductDao;
-import user_shop.demo.entity.NewProductEntity;
-import user_shop.demo.entity.PageEntity;
-import user_shop.demo.entity.Product;
-import user_shop.demo.entity.ProductCondition;
-import user_shop.demo.service.ProductService;
+import com.example.user_shop.demo.Dao.ProductDao;
+import com.example.user_shop.demo.entity.NewProductEntity;
+import com.example.user_shop.demo.entity.PageEntity;
+import com.example.user_shop.demo.entity.Product;
+import com.example.user_shop.demo.entity.ProductCondition;
+import com.example.user_shop.demo.service.ProductService;
 
-import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;

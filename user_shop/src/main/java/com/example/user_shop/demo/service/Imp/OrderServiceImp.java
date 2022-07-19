@@ -1,15 +1,14 @@
-package user_shop.demo.service.Imp;
+package com.example.user_shop.demo.service.Imp;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import user_shop.demo.Dao.OrderDao;
-import user_shop.demo.entity.OrderInfoEntity;
-import user_shop.demo.entity.Orders;
-import user_shop.demo.entity.Product;
-import user_shop.demo.service.OrderService;
+import com.example.user_shop.demo.Dao.OrderDao;
+import com.example.user_shop.demo.entity.Orders;
+import com.example.user_shop.demo.entity.Product;
+import com.example.user_shop.demo.service.OrderService;
 
 import javax.annotation.Resource;
 

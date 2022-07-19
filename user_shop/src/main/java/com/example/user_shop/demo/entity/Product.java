@@ -1,10 +1,9 @@
-package user_shop.demo.entity;
+package com.example.user_shop.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.Value;
 import lombok.experimental.Accessors;
 
 @Data

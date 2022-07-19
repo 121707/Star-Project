@@ -1,5 +1,6 @@
 package com.example.order_service.service.Imp;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -9,9 +10,11 @@ import com.example.order_service.entity.PageEntity;
 import com.example.order_service.entity.Product;
 import com.example.order_service.entity.ProductCondition;
 import com.example.order_service.service.ProductService;
+import com.example.order_service.util.OSSUtil;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
+import java.util.*;
 
 
 @Service
@@ -37,8 +40,36 @@ public class ProductServiceImp extends ServiceImpl<ProductDao, Product> implemen
     @Value("${product.pictureSuffix}")
     private String pictureSuffix;
 
+    @Autowired
+    private OSSUtil ossUtil;
+
+    @Autowired
+    private RedisTemplate redisTemplateDB1;
 
     //通过关键字和价格进行查询,过审、开售的商品
+    @Override
+    public Page<Product> pageSecByKey(PageEntity<ProductCondition> p) {
+        Page<Product> page = new Page<>(p.getCurpage() , pageSize);
+        ProductCondition pc = p.getEntity();
+        String key = pc.getKey();
+        Double minp = pc.getMinPrice() == null ? 0.0 : pc.getMinPrice()
+                , maxp = pc.getMaxPrice() == null ? Double.MAX_VALUE : pc.getMaxPrice();
+
+        //DB1中得到的所有key都是可以被展示的商品的productId
+        List<String> list = new ArrayList<>(redisTemplateDB1.keys("*"));
+
+        QueryWrapper<Product> q = new QueryWrapper<>();
+
+        q.in("product_id",list);
+        if(pc.getKey().length() > 0) {
+            q.and(Wrapper -> Wrapper.like("name", key).or().like("brand", key));
+        }
+        q.ge("price" , minp).le("price" , maxp);
+
+        return this.page(page , q);
+    }
+
+    //通过关键字和价格进行查询,过审、即将开售的商品
     @Override
     public Page<Product> pageByKey(PageEntity<ProductCondition> p) {
         Page<Product> page = new Page<>(p.getCurpage() , pageSize);
@@ -56,28 +87,6 @@ public class ProductServiceImp extends ServiceImpl<ProductDao, Product> implemen
         q.eq("audit_status" , 2);
         q.le("sell_time",new DateTime().toString("yyyy-MM-dd HH:mm:ss"));
 
-        return this.page(page , q);
-    }
-
-    //通过关键字和价格进行查询,过审、即将开售的商品
-    //秒杀商品开售后继续停留20分钟
-    @Override
-    public Page<Product> pageSecByKey(PageEntity<ProductCondition> p) {
-        Page<Product> page = new Page<>(p.getCurpage() , pageSize);
-        ProductCondition pc = p.getEntity();
-
-        String key = pc.getKey();
-        Double minp = pc.getMinPrice() == null ? 0.0 : pc.getMinPrice()
-                , maxp = pc.getMaxPrice() == null ? Double.MAX_VALUE : pc.getMaxPrice();
-        QueryWrapper<Product> q = new QueryWrapper<>();
-
-        if(pc.getKey().length() > 0){
-            q.and(Wrapper -> Wrapper.like("name" , key).or().like("brand" , key));
-        }
-        q.ge("price" , minp).le("price" , maxp)
-                .eq("publish_status" , 1)
-                .eq("audit_status" , 2)
-                .between("TIMESTAMPDIFF(MINUTE , now() , sell_time)",-20,60);
         return this.page(page , q);
     }
 
@@ -106,21 +115,36 @@ public class ProductServiceImp extends ServiceImpl<ProductDao, Product> implemen
 
     //新商品
     @Override
-    public boolean addNewProduct(NewProductEntity np, MultipartFile file , Integer userId) throws IOException {
+    public boolean addNewProduct(String npJson, MultipartFile file , Integer userId) throws IOException {
         Product p = new Product();
+
+        NewProductEntity np = JSONObject.parseObject(npJson, NewProductEntity.class);
+        System.out.println(np);
         String applyTime = new DateTime().toString("yyyy-MM-dd hh-mm-ss");
         int maxId = this.count();
 
-        String pictureName = "/" + String.valueOf(maxId) + UUID.randomUUID() + pictureSuffix;
-        String desUrl = pictureBaseSrc + pictureName;
-        file.transferTo(new File(desUrl));
+        String pictureName =String.valueOf(maxId) + UUID.randomUUID() + pictureSuffix;
+        String pictureUrl = "http://" + ossUtil.uploadNewPPictiure(file, pictureName);
 
         p.setApplyTime(applyTime).setBrand(np.getBrand()).setCategory(np.getCategory()).setName(np.getName())
-                .setUserId(userId).setStock(np.getStock()).setPrice(np.getPrice()).setPictureUrl(pictureName).setSellTime(np.getSellTime());
+                .setUserId(userId).setStock(np.getStock()).setPrice(np.getPrice()).setPictureUrl(pictureUrl).setSellTime(np.getSellTime());
+
 
         return this.save(p);
 
     }
+
+    @Override
+    public List<Product> getPreSecKillList() {
+        QueryWrapper<Product> p = new QueryWrapper<>();
+        p.between("timestampdiff(minute , now() , sell_time)",0,20);
+        p.eq("publish_status" , 1);
+        p.eq("audit_status" , 2);
+
+        List<Product> ans =  this.list(p);
+        return ans;
+    }
+
 
 
 //    //判断商品上架时间，对秒杀商品的库存提前保存redis

@@ -1,21 +1,26 @@
-package com.atguigu.security.security;
+package com.example.common1.security.security;
 
-import com.atguigu.utils.utils.R;
-import com.atguigu.utils.utils.ResponseUtil;
+import com.example.common1.utils.utils.R;
+import com.example.common1.utils.utils.ResponseUtil;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 //退出处理器
 public class TokenLogoutHandler implements LogoutHandler {
     private TokenManager tokenManager;
-    private RedisTemplate redisTemplate;
+//    private RedisTemplate redisTemplate;
+//
+//    public TokenLogoutHandler(TokenManager tokenManager,RedisTemplate redisTemplate) {
+//        this.tokenManager = tokenManager;
+//        this.redisTemplate = redisTemplate;
+//    }
 
-    public TokenLogoutHandler(TokenManager tokenManager,RedisTemplate redisTemplate) {
+    public TokenLogoutHandler(TokenManager tokenManager) {
         this.tokenManager = tokenManager;
-        this.redisTemplate = redisTemplate;
     }
     @Override
     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
@@ -27,8 +32,8 @@ public class TokenLogoutHandler implements LogoutHandler {
             tokenManager.removeToken(token);
             //从token获取用户名
             String username = tokenManager.getUserInfoFromToken(token);
-            redisTemplate.delete(username);
+//            redisTemplate.delete(username);
         }
-        ResponseUtil.out(response, R.ok());
+//        ResponseUtil.out(response, R.ok());
     }
 }

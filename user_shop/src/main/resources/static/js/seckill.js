@@ -1,7 +1,7 @@
 var curpage;
 // 初始化分页
 var mysize = 8;
-var baseUrl = 'http://localhost:8080'
+var baseUrl = 'http://star.pro.com:8082'
 
 //设置tbody的html
 function setTbody (arr) {
@@ -41,7 +41,7 @@ function getList(current) {
                     contentType: "application/json",
                     type: 'post',
                     async: false,
-                    url: '/shop/secKillList',
+                    url: baseUrl + '/productService/secKillList',
                     data: JSON.stringify(data),
                     success: function (data) {
                         setTbody(data['list']);

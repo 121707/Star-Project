@@ -7,9 +7,17 @@ product:
   pictureSuffix: .jpg
 
 spring:
-  redis:
-    port: 6379
-    host: 192.168.129.128
+  application:
+    name: shopView
+#  redis:
+#    port: 6379
+#    host: 192.168.129.128
+#    nacos注册信息
+  cloud:
+    nacos:
+      ##注册
+      discovery:
+        server-addr: 192.168.129.128:8848
 
   datasource:
     username: root
@@ -23,3 +31,15 @@ spring:
     prefix: classpath:/templates/
 
 
+server:
+  port: 80
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 600000

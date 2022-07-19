@@ -1,4 +1,4 @@
-package com.atguigu.security.entity;
+package com.example.common1.security.entity;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -42,12 +42,12 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return currentUserInfo.getPassword();
+        return currentUserInfo.getPassWord();
     }
 
     @Override
     public String getUsername() {
-        return currentUserInfo.getUsername();
+        return currentUserInfo.getUserName();
     }
 
     @Override

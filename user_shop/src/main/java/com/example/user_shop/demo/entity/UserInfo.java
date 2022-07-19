@@ -1,7 +1,6 @@
-package user_shop.demo.entity;
+package com.example.user_shop.demo.entity;
 
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class UserInfo {

@@ -1,2 +1,5 @@
-package com.example.order_service.service;public interface RedisService {
+package com.example.order_service.service;
+
+public interface RedisService {
+
 }

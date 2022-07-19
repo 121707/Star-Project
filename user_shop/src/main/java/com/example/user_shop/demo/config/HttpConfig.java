@@ -1,4 +1,4 @@
-package user_shop.demo.config;
+package com.example.user_shop.demo.config;
 
 
 import org.springframework.context.annotation.Bean;

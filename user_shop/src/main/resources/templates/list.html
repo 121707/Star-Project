@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -144,7 +144,7 @@
   <div class="nav-cent">
     <div class="top-r"> 
         <img style="border-radius: 14px;vertical-align: middle;" width="28px" height="28px"
-             th:src="${user.getAvatarUrl()}" alt=""/>
+             th:src="${user.avatarUrl}" alt=""/>
         <a th:href="@{/shop/userpage}" >个人中心</a>
         <a href="#" id="b-regist">注销</a> </div>
       <div class="top-l">全国统一客服热线：400-877-9288</div>

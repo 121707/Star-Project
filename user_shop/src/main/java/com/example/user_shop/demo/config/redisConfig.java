@@ -1,25 +1,16 @@
-package user_shop.demo.config;
+package com.example.user_shop.demo.config;
 
 
 import java.lang.reflect.Method;
-import java.time.Duration;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @EnableCaching
-
 public class redisConfig extends CachingConfigurerSupport {
-
     @Override
     public KeyGenerator keyGenerator() {
         return new KeyGenerator() {

@@ -1,4 +1,4 @@
-package com.atguigu.utils;
+package com.example.common1.utils;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -19,8 +19,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
 
-@EnableCaching //开启缓存
-@Configuration  //配置类
+//@EnableCaching //开启缓存
+//@Configuration  //配置类
 public class RedisConfig extends CachingConfigurerSupport {
 
     @Bean

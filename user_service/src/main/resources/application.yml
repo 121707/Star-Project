@@ -1,0 +1,25 @@
+user:
+  avatarBaseSrc: E:/user_avatar
+  avatarFaultName: default.png
+product:
+  pagesize: 8
+  pictureBaseSrc: E:/ppicture
+  pictureSuffix: .jpg
+
+server:
+  port: 8083
+
+spring:
+  datasource:
+    username: root
+    password: password
+    url: jdbc:mysql://star.pro.com:3306/project
+    driver-class-name: com.mysql.jdbc.Driver
+
+  application:
+    name: user-service
+  cloud:
+    nacos:
+      ##注册
+      discovery:
+        server-addr: 192.168.129.128:8848

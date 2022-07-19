@@ -1,10 +1,10 @@
-package user_shop.demo.Dao;
+package com.example.user_shop.demo.Dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import user_shop.demo.entity.Orders;
+import com.example.user_shop.demo.entity.Orders;
 @Mapper
 public interface OrderDao extends BaseMapper<Orders> {
 

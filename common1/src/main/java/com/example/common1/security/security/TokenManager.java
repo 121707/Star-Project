@@ -1,4 +1,4 @@
-package com.atguigu.security.security;
+package com.example.common1.security.security;
 
 
 
@@ -29,5 +29,7 @@ public class TokenManager {
         return userinfo;
     }
     //3 删除token
-    public void removeToken(String token) { }
+    public void removeToken(String token) {
+
+    }
 }

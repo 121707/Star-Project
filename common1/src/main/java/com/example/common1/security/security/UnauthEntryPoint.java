@@ -1,7 +1,7 @@
-package com.atguigu.security.security;
+package com.example.common1.security.security;
 
-import com.atguigu.utils.utils.R;
-import com.atguigu.utils.utils.ResponseUtil;
+import com.example.common1.utils.utils.R;
+import com.example.common1.utils.utils.ResponseUtil;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 

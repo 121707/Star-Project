@@ -1,23 +1,19 @@
-package user_shop.demo.controller;
+package com.example.user_shop.demo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import com.example.user_shop.demo.entity.Product;
+import com.example.user_shop.demo.service.Imp.OrderServiceImp;
+import com.example.user_shop.demo.service.Imp.ProductServiceImp;
+import com.example.user_shop.demo.service.Imp.UserServiceImp;
 import org.springframework.web.bind.annotation.PostMapping;
-import user_shop.demo.entity.Product;
-import user_shop.demo.service.Imp.OrderServiceImp;
-import user_shop.demo.service.Imp.ProductServiceImp;
-import user_shop.demo.service.Imp.UserServiceImp;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Controller
 public class view {
@@ -30,15 +26,17 @@ public class view {
 
     @Autowired
     private UserServiceImp userServiceImp;
+
     @GetMapping("/shop/main")
-    public String m1(Model model , Principal principal){
+    public String m1(HttpServletRequest request, Model model , Principal principal){
         model.addAttribute("user",userServiceImp.getById(principal.getName()));
+        System.out.println(model.getAttribute("user"));
         return "list";
     }
 
     //跳转商品展示页
     @GetMapping("/shop/show/{productId}")
-    public String m2(@PathVariable("productId")Integer productId, Model model ,Principal principal){
+    public String m2( @PathVariable("productId")Integer productId, Model model , Principal principal){
         model.addAttribute("user",userServiceImp.getById(principal.getName()));
         Product p = imp.getById(productId);
         model.addAttribute("p" , p);

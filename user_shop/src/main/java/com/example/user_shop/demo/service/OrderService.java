@@ -1,8 +1,7 @@
-package user_shop.demo.service;
+package com.example.user_shop.demo.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import user_shop.demo.entity.OrderInfoEntity;
-import user_shop.demo.entity.Orders;
+import com.example.user_shop.demo.entity.Orders;
 
 public interface OrderService extends IService<Orders> {
     //获取个人交易次数，0下标为买，1下标为卖

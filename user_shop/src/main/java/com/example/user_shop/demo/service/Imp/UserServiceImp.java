@@ -1,4 +1,4 @@
-package user_shop.demo.service.Imp;
+package com.example.user_shop.demo.service.Imp;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import user_shop.demo.Dao.UserDao;
-import user_shop.demo.entity.PassEntity;
-import user_shop.demo.entity.User;
-import user_shop.demo.service.UserService;
+import com.example.user_shop.demo.Dao.UserDao;
+import com.example.user_shop.demo.entity.PassEntity;
+import com.example.user_shop.demo.entity.User;
+import com.example.user_shop.demo.service.UserService;
 
 import java.io.File;
 import java.io.IOException;

@@ -9,6 +9,7 @@ import com.example.order_service.entity.ProductCondition;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface ProductService extends IService<Product> {
 
@@ -24,10 +25,11 @@ public interface ProductService extends IService<Product> {
 //    //库存-1
 //    public boolean subRedisStockByKey(Integer num , Integer productId);
 
-
-
     //新商品
-    public boolean addNewProduct(NewProductEntity np , MultipartFile file , Integer productId) throws IOException;
+    public boolean addNewProduct(String npJson , MultipartFile file , Integer productId) throws IOException;
+
+    //获取Sql可以被展示的秒杀商品
+    public List<Product> getPreSecKillList();
 
 
 }
